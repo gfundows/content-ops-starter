@@ -1,54 +1,84 @@
-# Netlify Content Ops Starter 
+# ParkInfo - Gestion de Parc Informatique
 
-![Content Ops Starter](https://assets.stackbit.com/docs/content-ops-starter-thumb.png)
+Application de gestion de parc informatique développée avec React, TypeScript, et SQLite.
 
-Netlify starter that's made for customization with a flexible content model, component library, [visual editing](https://docs.netlify.com/visual-editor/overview/) and [Git Content Source](https://docs.netlify.com/create/content-sources/git/).
+## Prérequis
 
-**⚡ View demo:** [https://content-ops-starter.netlify.app/](https://content-ops-starter.netlify.app/)
+- Node.js (version 16 ou supérieure)
+- npm ou yarn
+- Git
 
-## Deploying to Netlify
+## Installation
 
-If you click "Deploy to Netlify" button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
+1. Clonez le dépôt :
+```bash
+git clone [URL_DU_REPO]
+cd parkinfo
+```
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/content-ops-starter)
+2. Installez les dépendances :
+```bash
+npm install
+```
 
-## Develop with Netlify Visual Editor Locally
-
-The typical development process is to begin by working locally. Clone this repository, then run `npm install` in its root directory.
-
-Run the Next.js development server:
-
-```txt
-cd content-ops-starter
+3. Démarrez l'application en mode développement :
+```bash
 npm run dev
 ```
 
-Install the [Netlify Visual Editor CLI](https://www.npmjs.com/package/@stackbit/cli). Then open a new terminal window in the same project directory and run the Netlify visual editor dev server:
+L'application sera accessible à l'adresse http://localhost:5173
 
-```txt
-npm install -g @stackbit/cli
-stackbit dev
-```
+## Structure de la base de données
 
-This outputs your own Netlify visual editor URL. Open this, register, or sign in, and you will be directed to Netlify's visual editor for your new project.
+L'application utilise SQLite pour la persistance des données. La base de données est automatiquement créée au premier lancement dans le fichier `parkinfo.db`.
 
-![Next.js Dev + Visual Editor Dev](https://assets.stackbit.com/docs/next-dev-stackbit-dev.png)
+### Tables
 
-## Building for production
+#### Assets (Équipements)
+- id (TEXT PRIMARY KEY)
+- name (TEXT)
+- type (TEXT)
+- status (TEXT)
+- user (TEXT)
+- installDate (TEXT)
+- site (TEXT)
+- function (TEXT)
+- brand (TEXT)
+- model (TEXT)
+- serialNumber (TEXT)
+- operator (TEXT)
+- comments (TEXT)
+- deleted (INTEGER)
+- ipAddress (TEXT)
+- macAddress (TEXT)
+- service (TEXT)
 
-To build a static site for production, run the following command
+#### Users (Utilisateurs)
+- id (TEXT PRIMARY KEY)
+- site (TEXT)
+- firstName (TEXT)
+- lastName (TEXT)
+- function (TEXT)
+- role (TEXT)
+- password (TEXT)
+- deleted (INTEGER)
 
-```shell
-npm run build
-```
+## Fonctionnalités
 
-## Next Steps
+- Gestion des équipements informatiques
+- Gestion des utilisateurs
+- Recherche globale
+- Interface responsive
+- Mode sombre/clair
+- Filtrage et tri des données
+- Gestion des suppressions douces (soft delete)
 
-Here are a few suggestions on what to do next if you're new to Netlify visual editor:
+## Technologies utilisées
 
-- Learn [Netlify visual editor overview](https://docs.netlify.com/visual-editor/visual-editing/)
-- Check [Netlify visual editor reference documentation](https://visual-editor-reference.netlify.com/)
-
-## Support
-
-If you get stuck along the way, get help in our [support forums](https://answers.netlify.com/).
+- React
+- TypeScript
+- Vite
+- TailwindCSS
+- SQLite (better-sqlite3)
+- React Router
+- Lucide Icons
